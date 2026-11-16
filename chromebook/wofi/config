@@ -1,0 +1,22 @@
+# Set the mode to drun to show .desktop applications
+mode=drun
+
+# Allow typing to search for applications
+allow_images=true
+
+# Ignore case when searching
+insensitive=true
+
+# Set the width and height of the wofi window
+width=700
+height=400
+
+# Set the number of columns and rows
+columns=2
+lines=8
+
+# Other useful settings to play with
+# term=foot
+# show_all=true
+# hide_scroll=true
+# line_wrap=true
