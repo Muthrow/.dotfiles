@@ -1,0 +1,163 @@
+/* Waybar style for the Hyprland laptop rice. Palette is documented in README.md.
+   Hyprland blurs behind the bar (layer rule in hyprland.lua), so the
+   backgrounds here are kept translucent on purpose. */
+
+@define-color bg      #1d1e31;
+@define-color surface #2d2350;
+@define-color muted   #565a85;
+@define-color text    #d6d8f0;
+@define-color accent  #9d7cd8;
+@define-color cyan    #72daea;
+@define-color red     #ff5555;
+@define-color yellow  #f1fa8c;
+@define-color green   #50fa7b;
+
+* {
+    font-family: "Cinzel Decorative", "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: alpha(@bg, 0.6);
+    border: 2px solid alpha(@accent, 0.6);
+    border-radius: 12px;
+    color: @text;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background-color: alpha(@bg, 0.9);
+    border: 1px solid @accent;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @text;
+}
+
+/* Waybar FAQ: drop GTK's default button border and hover effect */
+button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: none;
+}
+
+/* Workspaces */
+#workspaces {
+    margin-left: 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: @muted;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@surface, 0.8);
+    color: @text;
+}
+
+#workspaces button.active {
+    background-color: @accent;
+    color: @bg;
+}
+
+#workspaces button.special {
+    color: @cyan;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    color: @bg;
+}
+
+/* Every other module is a pill */
+#submap,
+#clock,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#backlight,
+#battery,
+#tray {
+    padding: 0 10px;
+    margin: 4px 0;
+    border-radius: 8px;
+    background-color: alpha(@surface, 0.75);
+    color: @text;
+}
+
+#submap {
+    background-color: @accent;
+    color: @bg;
+}
+
+#clock {
+    color: @cyan;
+}
+
+#tray {
+    margin-right: 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+/* States */
+#idle_inhibitor.activated {
+    color: @yellow;
+}
+
+#pulseaudio.muted {
+    color: @muted;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @yellow;
+}
+
+@keyframes blink {
+    to {
+        background-color: @red;
+        color: @bg;
+    }
+}
+
+/* steps() instead of linear keeps the blink cheap on CPU */
+#battery.critical:not(.charging) {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

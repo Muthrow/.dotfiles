@@ -1,0 +1,18 @@
+# Mako notification config for the Hyprland laptop rice. Palette is documented in README.md.
+font=Sometype Mono 10
+background-color=#15162acc
+text-color=#d6d8f0
+border-color=#9d7cd8
+border-size=2
+border-radius=12
+padding=10
+margin=10
+width=320
+default-timeout=5000
+
+[urgency=low]
+border-color=#565a85
+
+[urgency=critical]
+border-color=#ff5555
+default-timeout=0

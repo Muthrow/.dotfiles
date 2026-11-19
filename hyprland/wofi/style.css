@@ -1,0 +1,58 @@
+/* Wofi style for the Hyprland laptop rice. Palette is documented in README.md.
+   Hyprland blurs behind the launcher (layer rule in hyprland.lua). */
+
+@define-color bg      #15162a;
+@define-color surface #2d2350;
+@define-color text    #d6d8f0;
+@define-color accent  #9d7cd8;
+
+/* Clear GTK theme styling everywhere, then color only what needs it.
+   A translucent background on * would stack once per nested box. */
+* {
+    font-family: "Cinzel Decorative", "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
+    font-size: 13px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window {
+    background-color: alpha(@bg, 0.75);
+    border: 2px solid @accent;
+    border-radius: 12px;
+}
+
+#outer-box {
+    margin: 8px;
+}
+
+#input {
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: @surface;
+    color: @text;
+}
+
+#entry {
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+#entry:selected {
+    background-color: @accent;
+}
+
+#img {
+    margin-right: 6px;
+}
+
+#text {
+    color: @text;
+}
+
+#entry:selected #text {
+    color: @bg;
+}

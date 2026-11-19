@@ -1,0 +1,18 @@
+# Wofi config for the Hyprland laptop rice. Styling lives in style.css.
+mode=drun
+prompt=Search
+# Show application icons
+allow_images=true
+image_size=24
+# Case-insensitive search
+insensitive=true
+
+width=700
+height=400
+columns=2
+lines=8
+
+# Other settings worth trying
+# term=alacritty
+# hide_scroll=true
+# line_wrap=word
